@@ -1,0 +1,18 @@
+<a
+  [routerLink]="link"
+  class="
+    flex
+    justify-start
+    gap-x-2
+    w-full
+    px-4
+    py-2
+    hover:bg-gray-200
+    rounded-md
+    transition
+  "
+  routerLinkActive="bg-gray-200"
+  [routerLinkActiveOptions]="{ exact: true }"
+>
+  <ng-content></ng-content>
+</a>

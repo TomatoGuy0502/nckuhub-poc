@@ -1,0 +1,25 @@
+<aside class="flex flex-col gap-y-6 h-full border-r-2 border-gray-200 py-6 px-4">
+  <h1>
+    <img class="h-10" src="assets/nav_logo.svg" alt="nckuhub logo" />
+  </h1>
+  <button class="flex items-center justify-center gap-x-1 bg-teal-500 w-full py-2 rounded-md text-white">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+    </svg>
+    <span>提供心得</span>
+  </button>
+  <nav class="w-full flex flex-col gap-y-2 text-gray-500">
+    <app-navlink link="/">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+      </svg>
+      <span>找課程</span>
+    </app-navlink>
+    <app-navlink link="/timetable">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+      </svg>
+      <span>排課表</span>
+    </app-navlink>
+  </nav>
+</aside>

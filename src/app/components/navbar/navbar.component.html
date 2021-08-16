@@ -1,6 +1,44 @@
-<header class="flex bg-gray-400 p-2 justify-between items-center">
-  <h1>
-    找課程
+<header class="flex items-center justify-between px-6 py-4">
+  <h1 class="text-lg font-bold gap-x-2">
+    <p class="text-gray-800">嗨，林彥廷</p>
+    <p class="text-gray-400">歡迎回來！</p>
   </h1>
-  <div><input type="text" /></div>
+  <div class="flex items-center w-1/2 px-4 py-2 bg-gray-100 rounded-lg">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-400" fill="none" viewBox="0 0 24 24"
+      stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+    </svg>
+    <input type="text"
+      class="block w-full placeholder-gray-400 bg-transparent border-transparent focus:border-transparent focus:ring-transparent"
+      placeholder="搜尋「課程名」或「教師名」" />
+  </div>
+  <div>
+    <ul class="flex gap-x-2">
+      <li class="flex items-center p-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-gray-400" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+        </svg>
+      </li>
+      <li class="flex items-center p-2">
+        <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" width="40" height="40">
+          <mask id="mask__beam" maskUnits="userSpaceOnUse" x="0" y="0" width="36" height="36">
+            <rect width="36" height="36" rx="72" fill="white"></rect>
+          </mask>
+          <g mask="url(#mask__beam)">
+            <rect width="36" height="36" fill="#fea6a2"></rect>
+            <rect x="0" y="0" width="36" height="36" transform="translate(8 0) rotate(314 18 18) scale(1.2)"
+              fill="#ffe9af" rx="6"></rect>
+            <g transform="translate(4 -5) rotate(4 18 18)">
+              <path d="M15 21c2 1 4 1 6 0" stroke="black" fill="none" stroke-linecap="round"></path>
+              <rect x="10" y="14" width="1.5" height="2" rx="1" stroke="none" fill="black"></rect>
+              <rect x="24" y="14" width="1.5" height="2" rx="1" stroke="none" fill="black"></rect>
+            </g>
+          </g>
+        </svg>
+      </li>
+    </ul>
+  </div>
 </header>

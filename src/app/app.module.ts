@@ -8,6 +8,8 @@ import { HomepageComponent } from './views/homepage/homepage.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { TimetableComponent } from './views/timetable/timetable.component';
 import { NavlinkComponent } from './components/sidebar/navlink/navlink.component';
+import { FilterComponent } from './components/homepage/filter/filter.component';
+import { CourseListComponent } from './components/homepage/course-list/course-list.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { NavlinkComponent } from './components/sidebar/navlink/navlink.component
     HomepageComponent,
     SidebarComponent,
     TimetableComponent,
-    NavlinkComponent
+    NavlinkComponent,
+    FilterComponent,
+    CourseListComponent
   ],
   imports: [
     BrowserModule,

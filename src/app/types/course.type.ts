@@ -1,4 +1,4 @@
-interface course {
+export interface Course {
   id: number;
   系號: string;
   選課序號: string;

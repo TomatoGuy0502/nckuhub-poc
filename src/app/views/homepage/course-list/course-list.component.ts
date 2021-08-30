@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core'
 import { Course } from '../../../types/course.type'
-import { Feedback } from '../../../types/feedback.type'
 import { CourseService } from '../../../services/course.service'
 import { CourseModalService } from '../course-modal/course-modal.service'
 
@@ -11,7 +10,6 @@ import { CourseModalService } from '../course-modal/course-modal.service'
 })
 export class CourseListComponent implements OnInit {
   courses: Course[] = []
-  feedback?: Feedback
   constructor(
     private courseService: CourseService,
     private courseModalService: CourseModalService

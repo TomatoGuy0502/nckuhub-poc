@@ -1,3 +1,4 @@
+import { Course } from './course.type'
 export interface Feedback {
   courseId: number
   got: string
@@ -7,4 +8,5 @@ export interface Feedback {
     text: string
     semester: string
   }[]
+  course?: Course
 }

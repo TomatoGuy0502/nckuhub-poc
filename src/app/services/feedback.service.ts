@@ -13,7 +13,7 @@ export class FeedbackService {
   constructor(private http: HttpClient) {}
 
   getFeedback(id: number): Observable<Feedback> {
-    const url = `${this.feedbackUrl}?courseId=${id}`
+    const url = `${this.feedbackUrl}?courseId=${id}&_expand=course`
     return this.http.get<Feedback[]>(url).pipe(
       map((val) => val[0]),
       catchError(this.handleError<Feedback>(`getFeedback courseId=${id}`))

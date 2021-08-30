@@ -115,13 +115,15 @@ module.exports = {
           '800': '#203914',
           '900': '#162310'
         }
+      },
+      fontFamily: {
+        sans:
+          'Noto Sans TC, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"'
       }
     }
   },
   variants: {
     extend: {}
   },
-  plugins: [
-    require('@tailwindcss/forms')
-  ]
+  plugins: [require('@tailwindcss/forms')]
 }

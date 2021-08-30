@@ -4,14 +4,20 @@
     *ngFor="let course of courses"
     (click)="open(course.id)"
   >
-    <div class="relative flex items-center flex-shrink-0 bg-red-100 rounded-full">
-      <p class="grid w-12 h-12 text-white bg-red-400 rounded-full select-none place-items-center">
-        通
+    <div
+      class="relative flex items-center flex-shrink-0 rounded-full"
+      [ngClass]="{ 'bg-red-100': course['系號'] === 'A9', 'bg-green-100': course['系號'] === 'A1' }"
+    >
+      <p
+        class="grid w-12 h-12 font-medium text-white rounded-full select-none place-items-center"
+        [ngClass]="{ 'bg-red-400': course['系號'] === 'A9', 'bg-green-400': course['系號'] === 'A1' }"
+      >
+        {{ course['系所名稱'][0] }}
       </p>
       <p class="px-4 text-sm rounded-r-full">{{ course['系號'] }}-{{ course['選課序號'] }}</p>
     </div>
     <div>
-      <p class="font-bold">{{ course['課程名稱'] }}</p>
+      <p class="font-medium">{{ course['課程名稱'] }}</p>
       <p class="text-sm text-gray-400">
         {{ course['系所名稱'] }} — {{ course['老師'] }} — {{ course['時間'] }}
       </p>

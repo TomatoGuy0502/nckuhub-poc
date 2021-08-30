@@ -4,12 +4,14 @@ import { HomepageComponent } from './views/homepage/homepage.component';
 import { TimetableComponent } from './views/timetable/timetable.component';
 
 const routes: Routes = [
-  { path: '', component: HomepageComponent },
+  { path: '', component: HomepageComponent, children: [
+    { path: 'feedback/:id', component: HomepageComponent }
+  ] },
   { path: 'timetable', component: TimetableComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

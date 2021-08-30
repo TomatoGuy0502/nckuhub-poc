@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Course } from '../../../types/course.type'
 import { Feedback } from '../../../types/feedback.type';
 import { CourseService } from '../../../services/course.service'
-import { FeedbackService } from '../../../services/feedback.service'
+import { CourseModalService } from '../course-modal/course-modal.service';
 
 @Component({
   selector: 'app-course-list',
@@ -14,7 +14,7 @@ export class CourseListComponent implements OnInit {
   feedback?: Feedback
   constructor(
     private courseService: CourseService,
-    private feedbackService: FeedbackService
+    private courseModalService: CourseModalService
   ) {}
 
   ngOnInit(): void {
@@ -24,10 +24,8 @@ export class CourseListComponent implements OnInit {
   getCourses(): void {
     this.courseService.getCourses().subscribe(courses => this.courses = courses)
   }
-  getFeedback(courseId: number): void {
-    this.feedbackService.getFeedback(courseId).subscribe(feedback => {
-      this.feedback = feedback[0]
-      console.log(this.feedback)
-    })
+
+  open(courseId: number) {
+    this.courseModalService.open(courseId);
   }
 }

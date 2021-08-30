@@ -1,0 +1,86 @@
+<ng-container *ngIf="(status$ | async) === 'open'">
+  <div
+    class="
+      fixed
+      top-0
+      left-0
+      flex
+      items-center
+      justify-center
+      w-screen
+      h-screen
+      bg-gray-600 bg-opacity-50
+      backdrop-filter backdrop-blur-[2px]
+    "
+    (click)="close()"
+  >
+    <div
+      (click)="$event.stopPropagation()"
+      class="flex w-3/4 h-full text-gray-800 bg-white"
+    >
+      <div
+        class="
+          w-[360px]
+          flex-shrink-0
+          bg-gray-100
+          px-8
+          py-12
+          gap-y-4
+          flex flex-col
+        "
+      >
+        <h1 class="mb-6 text-3xl font-bold">西方古典音樂</h1>
+        <div class="p-3 bg-white rounded-lg">
+          <p class="text-xs text-gray-500">課程編號</p>
+          <h2>A9310</h2>
+        </div>
+        <div class="p-3 bg-white rounded-lg">
+          <p class="text-xs text-gray-500">開課單位</p>
+          <h2>通識中心</h2>
+        </div>
+        <div class="p-3 bg-white rounded-lg">
+          <p class="text-xs text-gray-500">開課老師</p>
+          <h2>林怡薇</h2>
+        </div>
+        <div class="p-3 bg-white rounded-lg">
+          <p class="text-xs text-gray-500">開課時段</p>
+          <h2>三 3 ~ 4</h2>
+        </div>
+        <div class="flex justify-between text-center gap-x-4">
+          <div class="flex-1 h-16 p-3 bg-indigo-400 rounded-md bg-opacity-10">
+            <p class="text-xs text-gray-500">收穫</p>
+            <p class="font-bold">7</p>
+          </div>
+          <div class="flex-1 h-16 p-3 rounded-md bg-cocoa-400 bg-opacity-10">
+            <p class="text-xs text-gray-500">甜度</p>
+            <p class="font-bold">8</p>
+          </div>
+          <div class="flex-1 h-16 p-3 rounded-md bg-lemon-400 bg-opacity-10">
+            <p class="text-xs text-gray-500">涼度</p>
+            <p class="font-bold">7</p>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-col flex-1 px-8 pt-12 overflow-y-auto gap-y-10">
+        <h2 class="text-3xl font-bold">課程心得</h2>
+        <ul
+          *ngIf="data$ | async as data; else loading"
+          class="flex flex-col overflow-y-auto gap-y-4"
+        >
+          <li
+            *ngFor="let comment of data.comments"
+            class="flex flex-col items-start p-4 bg-gray-100 gap-y-2"
+          >
+            <div class="px-4 py-1 text-sm bg-white rounded-full">
+              {{ comment.semester }}
+            </div>
+            <p>{{ comment.text }}</p>
+          </li>
+        </ul>
+        <ng-template #loading>
+          <div>Loading ...</div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</ng-container>

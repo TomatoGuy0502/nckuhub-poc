@@ -9,9 +9,9 @@ import { HomepageComponent } from './views/homepage/homepage.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { TimetableComponent } from './views/timetable/timetable.component';
 import { NavlinkComponent } from './components/sidebar/navlink/navlink.component';
-import { FilterComponent } from './components/homepage/filter/filter.component';
-import { CourseListComponent } from './components/homepage/course-list/course-list.component';
-import { FeedbackModalComponent } from './components/homepage/feedback-modal/feedback-modal.component';
+import { FilterComponent } from './views/homepage/filter/filter.component';
+import { CourseListComponent } from './views/homepage/course-list/course-list.component';
+import { CourseModalComponent } from './views/homepage/course-modal/course-modal.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,7 @@ import { FeedbackModalComponent } from './components/homepage/feedback-modal/fee
     NavlinkComponent,
     FilterComponent,
     CourseListComponent,
-    FeedbackModalComponent
+    CourseModalComponent
   ],
   imports: [
     BrowserModule,

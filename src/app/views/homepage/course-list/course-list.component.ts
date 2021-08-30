@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
 import { Course } from '../../../types/course.type'
-import { Feedback } from '../../../types/feedback.type';
+import { Feedback } from '../../../types/feedback.type'
 import { CourseService } from '../../../services/course.service'
-import { CourseModalService } from '../course-modal/course-modal.service';
+import { CourseModalService } from '../course-modal/course-modal.service'
 
 @Component({
   selector: 'app-course-list',
   templateUrl: './course-list.component.html',
-  styleUrls: ['./course-list.component.scss'],
+  styleUrls: ['./course-list.component.scss']
 })
 export class CourseListComponent implements OnInit {
   courses: Course[] = []
@@ -22,10 +22,10 @@ export class CourseListComponent implements OnInit {
   }
 
   getCourses(): void {
-    this.courseService.getCourses().subscribe(courses => this.courses = courses)
+    this.courseService.getCourses().subscribe((courses) => (this.courses = courses))
   }
 
   open(courseId: number) {
-    this.courseModalService.open(courseId);
+    this.courseModalService.open(courseId)
   }
 }

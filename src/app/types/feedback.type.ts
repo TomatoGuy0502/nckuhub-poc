@@ -1,10 +1,10 @@
 export interface Feedback {
-  courseId: number;
-  got: string;
-  cold: string;
-  sweet: string;
+  courseId: number
+  got: string
+  cold: string
+  sweet: string
   comments: {
-    text: string,
+    text: string
     semester: string
   }[]
 }

@@ -1,3 +1,5 @@
+import { Comment } from './comment.type'
+
 export interface Course {
   id: number
   系號: string
@@ -6,8 +8,10 @@ export interface Course {
   老師: string
   時間: string
   學分: number
-  選必修: '必修' | '選修'
   系所名稱: string
-  comment_num: number
-  課程碼: string
+  心得數量: number
+}
+
+export interface CourseWithComments extends Course {
+  comments: Comment[]
 }

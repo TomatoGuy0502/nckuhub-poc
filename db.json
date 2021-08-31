@@ -430,5 +430,37 @@
         }
       ]
     }
+  ],
+  "users": [
+    {
+      "name": "林彥廷",
+      "id": 1
+    },
+    {
+      "name": "TomatoGuy",
+      "id": 2
+    }
+  ],
+  "comments": [
+    {
+      "text": "井上老師感覺很注重日文會話，有時會輪流點同學起來回答",
+      "got": 10,
+      "sweet": 7,
+      "cold": 7,
+      "semester": "109-2",
+      "courseId": 430,
+      "userId": 1,
+      "id": 1
+    },
+    {
+      "text": "老師上課喜歡要同學們多多練習口說的部分，並且會糾正同學們的發音以及語調",
+      "got": 10,
+      "sweet": 7,
+      "cold": 5,
+      "semester": "109-1",
+      "courseId": 430,
+      "userId": 2,
+      "id": 2
+    }
   ]
 }

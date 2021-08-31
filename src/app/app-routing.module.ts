@@ -6,7 +6,7 @@ import { TimetableComponent } from './views/timetable/timetable.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
-  { path: 'feedback/:courseId', component: CourseModalComponent },
+  { path: 'course/:courseId', component: CourseModalComponent },
   { path: 'timetable', component: TimetableComponent },
 ];
 

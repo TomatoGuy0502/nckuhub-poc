@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { Observable, of } from 'rxjs'
 import { catchError } from 'rxjs/operators'
-import { Course } from '../types/course.type'
+import { Course, CourseWithComments } from '../types/course.type'
 
 @Injectable({
   providedIn: 'root'
 })
 export class CourseService {
-  private courseUrl = 'http://localhost:3000/courses'
+  private courseUrl = 'http://localhost:3002/courses'
 
   constructor(private http: HttpClient) {}
 
@@ -18,11 +18,11 @@ export class CourseService {
       .pipe(catchError(this.handleError<Course[]>('getCourses', [])))
   }
 
-  getCourse(id: number): Observable<Course> {
-    const url = `${this.courseUrl}/${id}`
+  getCourse(id: number): Observable<CourseWithComments> {
+    const url = `${this.courseUrl}/${id}?_embed=comments`
     return this.http
-      .get<Course>(url)
-      .pipe(catchError(this.handleError<Course>(`getCourse id=${id}`)))
+      .get<CourseWithComments>(url)
+      .pipe(catchError(this.handleError<CourseWithComments>(`getCourse id=${id}`)))
   }
 
   private handleError<T>(operation = 'operation', result?: T) {

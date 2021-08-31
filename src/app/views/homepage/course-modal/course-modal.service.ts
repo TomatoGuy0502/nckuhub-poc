@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core'
 import { BehaviorSubject, Observable } from 'rxjs'
 import { Location } from '@angular/common'
-import { Feedback } from '../../../types/feedback.type'
-import { FeedbackService } from '../../../services/feedback.service'
+import { CourseWithComments } from '../../../types/course.type'
+import { CourseService } from '../../../services/course.service'
 import { filter, switchMap } from 'rxjs/operators'
 
 @Injectable({
@@ -12,8 +12,11 @@ export class CourseModalService {
   private courseId$ = new BehaviorSubject<number>(0)
   private status$ = new BehaviorSubject<CourseModalStatus>(CourseModalStatus.Close)
 
-  constructor(private feedbackService: FeedbackService, private location: Location) {
-    this.location.onUrlChange((url) => {
+  constructor(
+    private courseService: CourseService,
+    private location: Location
+  ) {
+    this.location.onUrlChange(url => {
       console.log(url)
       if (url === '') {
         this.status$.next(CourseModalStatus.Close)
@@ -24,16 +27,16 @@ export class CourseModalService {
   getStatus(): Observable<CourseModalStatus> {
     return this.status$.asObservable()
   }
-  getFeedback(): Observable<Feedback> {
+  getCourse(): Observable<CourseWithComments> {
     return this.courseId$.pipe(
       filter(id => !!id),
-      switchMap((id) => {
-        return this.feedbackService.getFeedback(id)
+      switchMap(id => {
+        return this.courseService.getCourse(id)
       })
     )
   }
   open(courseId: number) {
-    this.location.go(`/feedback/${courseId}`)
+    this.location.go(`/course/${courseId}`)
     this.status$.next(CourseModalStatus.Open)
     this.courseId$.next(courseId)
   }

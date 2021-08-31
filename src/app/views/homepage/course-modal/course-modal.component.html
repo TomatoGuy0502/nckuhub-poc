@@ -6,6 +6,7 @@
       justify-center
       bg-gray-600 bg-opacity-50
       backdrop-filter backdrop-blur-[2px]
+      dark:text-gray-200
     "
     [ngClass]="{
       'static h-full flex-1 overflow-y-auto': (status$ | async) === CourseModalStatus.Full,
@@ -15,53 +16,64 @@
   >
     <div
       (click)="$event.stopPropagation()"
-      class="flex h-full text-gray-800 bg-white"
+      class="flex h-full text-gray-800 bg-white dark:bg-gray-800 dark:text-gray-300"
       [ngClass]="{
         'w-full': (status$ | async) === CourseModalStatus.Full,
         'w-3/4': (status$ | async) === CourseModalStatus.Open
       }"
-      *ngFor="let data of [(data$ | async)]"
+      *ngFor="let data of [data$ | async]"
     >
-      <div class="w-[360px] flex-shrink-0 bg-gray-100 px-8 py-12 gap-y-4 flex flex-col">
+      <div
+        class="
+          w-[360px]
+          flex-shrink-0
+          bg-gray-100
+          px-8
+          py-12
+          gap-y-4
+          flex flex-col
+          dark:bg-gray-700
+        "
+      >
         <ng-container *ngIf="data; else infoLoading">
           <h1 class="mb-6 text-3xl font-bold">{{ data.course?.['課程名稱'] }}</h1>
-          <div class="p-3 bg-white rounded-lg">
-            <p class="text-xs text-gray-500">課程編號</p>
+          <div class="p-3 bg-white rounded-lg dark:bg-gray-800">
+            <p class="text-xs text-gray-500 dark:text-gray-400">課程編號</p>
             <h2>{{ data.course?.['系號'] }}{{ data.course?.['選課序號'] }}</h2>
           </div>
-          <div class="p-3 bg-white rounded-lg">
-            <p class="text-xs text-gray-500">開課單位</p>
+          <div class="p-3 bg-white rounded-lg dark:bg-gray-800">
+            <p class="text-xs text-gray-500 dark:text-gray-400">開課單位</p>
             <h2>{{ data.course?.['系所名稱'] }}</h2>
           </div>
-          <div class="p-3 bg-white rounded-lg">
-            <p class="text-xs text-gray-500">開課老師</p>
+          <div class="p-3 bg-white rounded-lg dark:bg-gray-800">
+            <p class="text-xs text-gray-500 dark:text-gray-400">開課老師</p>
             <h2>{{ data.course?.['老師'] }}</h2>
           </div>
-          <div class="p-3 bg-white rounded-lg">
-            <p class="text-xs text-gray-500">開課時段</p>
+          <div class="p-3 bg-white rounded-lg dark:bg-gray-800">
+            <p class="text-xs text-gray-500 dark:text-gray-400">開課時段</p>
             <h2>{{ data.course?.['時間'] }}</h2>
           </div>
           <div class="flex justify-between text-center gap-x-4">
-            <div class="flex-1 h-16 p-3 bg-indigo-400 rounded-md bg-opacity-10">
-              <p class="text-xs text-gray-500">收穫</p>
+            <div class="flex-1 h-16 p-3 bg-indigo-400 rounded-md bg-opacity-10 dark:bg-opacity-20">
+              <p class="text-xs text-gray-500 dark:text-gray-400">收穫</p>
               <p class="font-bold">{{ data.got }}</p>
             </div>
-            <div class="flex-1 h-16 p-3 rounded-md bg-cocoa-400 bg-opacity-10">
-              <p class="text-xs text-gray-500">甜度</p>
+            <div class="flex-1 h-16 p-3 rounded-md bg-cocoa-400 bg-opacity-10 dark:bg-opacity-20">
+              <p class="text-xs text-gray-500 dark:text-gray-400">甜度</p>
               <p class="font-bold">{{ data.sweet }}</p>
             </div>
-            <div class="flex-1 h-16 p-3 rounded-md bg-lemon-400 bg-opacity-10">
-              <p class="text-xs text-gray-500">涼度</p>
+            <div class="flex-1 h-16 p-3 rounded-md bg-lemon-400 bg-opacity-10 dark:bg-opacity-20">
+              <p class="text-xs text-gray-500 dark:text-gray-400">涼度</p>
               <p class="font-bold">{{ data.cold }}</p>
             </div>
           </div>
         </ng-container>
         <ng-template #infoLoading>
-          <h1 class="mb-6 font-bold bg-gray-300 rounded-lg h-9"></h1>
-          <div class="h-16 bg-gray-200 rounded-lg"></div>
-          <div class="h-16 bg-gray-200 rounded-lg"></div>
-          <div class="h-16 bg-gray-200 rounded-lg"></div>
-          <div class="h-16 bg-gray-200 rounded-lg"></div>
+          <h1 class="mb-6 font-bold bg-gray-300 rounded-lg h-9 dark:bg-gray-500"></h1>
+          <div class="h-16 bg-gray-200 rounded-lg dark:bg-gray-600"></div>
+          <div class="h-16 bg-gray-200 rounded-lg dark:bg-gray-600"></div>
+          <div class="h-16 bg-gray-200 rounded-lg dark:bg-gray-600"></div>
+          <div class="h-16 bg-gray-200 rounded-lg dark:bg-gray-600"></div>
         </ng-template>
       </div>
       <div class="flex flex-col flex-1 px-8 pt-12 overflow-y-auto gap-y-10">
@@ -70,19 +82,19 @@
           <ng-container *ngIf="data; else commentLoading">
             <li
               *ngFor="let comment of data.comments"
-              class="flex flex-col items-start p-4 bg-gray-100 rounded-lg gap-y-2"
+              class="flex flex-col items-start p-4 bg-gray-100 rounded-lg gap-y-2 dark:bg-gray-700"
             >
-              <div class="px-4 py-1 text-sm bg-white rounded-full">
+              <div class="px-4 py-1 text-sm bg-white rounded-full dark:bg-gray-800">
                 {{ comment.semester }}
               </div>
               <p>{{ comment.text }}</p>
             </li>
           </ng-container>
           <ng-template #commentLoading>
-            <div class="h-32 bg-gray-200 rounded-lg"></div>
-            <div class="h-32 bg-gray-200 rounded-lg"></div>
-            <div class="h-32 bg-gray-200 rounded-lg"></div>
-            <div class="h-32 bg-gray-200 rounded-lg"></div>
+            <div class="h-32 bg-gray-200 rounded-lg dark:bg-gray-600"></div>
+            <div class="h-32 bg-gray-200 rounded-lg dark:bg-gray-600"></div>
+            <div class="h-32 bg-gray-200 rounded-lg dark:bg-gray-600"></div>
+            <div class="h-32 bg-gray-200 rounded-lg dark:bg-gray-600"></div>
           </ng-template>
         </ul>
       </div>

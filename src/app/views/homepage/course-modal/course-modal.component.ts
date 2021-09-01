@@ -5,7 +5,7 @@ import { round } from '../../../utils/math'
 import { CourseModalService, CourseModalStatus } from './course-modal.service'
 import { CourseWithComments } from '../../../types/course.type'
 import { Comment } from '../../../types/comment.type'
-import { debounceTime } from 'rxjs/operators'
+import { delay } from 'rxjs/operators'
 
 @Component({
   selector: 'app-course-modal',
@@ -21,7 +21,7 @@ export class CourseModalComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.status$ = this.courseModalService.getStatus()
-    this.data$ = this.courseModalService.getCourse().pipe(debounceTime(300)) // 確保至少有0.3秒的loading畫面，不會閃一下
+    this.data$ = this.courseModalService.getCourseWithComments().pipe(delay(300)) // 確保至少有0.3秒的loading畫面，不會閃一下
 
     // 如果是直接到這個頁面的話(不是透過點擊list-item開啟)
     const courseId = Number(this.route.snapshot.paramMap.get('courseId'))

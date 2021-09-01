@@ -27,11 +27,11 @@ export class CourseModalService {
   getStatus(): Observable<CourseModalStatus> {
     return this.status$.asObservable()
   }
-  getCourse(): Observable<CourseWithComments> {
+  getCourseWithComments(): Observable<CourseWithComments> {
     return this.courseId$.pipe(
       filter(id => !!id),
       switchMap(id => {
-        return this.courseService.getCourse(id)
+        return this.courseService.getCourseWithComments(id)
       })
     )
   }

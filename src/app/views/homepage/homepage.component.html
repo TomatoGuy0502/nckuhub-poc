@@ -4,9 +4,8 @@
   >
     <h2 class="text-xl font-bold text-gray-600 dark:text-gray-200">課程列表</h2>
     <app-filter></app-filter>
-    <app-course-list></app-course-list>
+    <app-course-list [courses]="courses"></app-course-list>
   </div>
 </div>
 
 <app-course-modal></app-course-modal>
-<router-outlet></router-outlet>

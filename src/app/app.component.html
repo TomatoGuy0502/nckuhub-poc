@@ -1,7 +1,10 @@
 <div class="flex w-screen h-screen dark:bg-gray-800">
   <app-sidebar></app-sidebar>
-  <div class="flex flex-col flex-1">
+  <div class="flex flex-col flex-1 min-w-0">
     <app-navbar></app-navbar>
-    <router-outlet></router-outlet>
+    <div class="flex flex-1">
+      <router-outlet></router-outlet>
+      <app-favorite-list></app-favorite-list>      
+    </div>
   </div>
 </div>

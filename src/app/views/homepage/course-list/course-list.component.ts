@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, Input } from '@angular/core'
 import { Course } from '../../../types/course.type'
-import { CourseService } from '../../../services/course.service'
 import { CourseModalService } from '../course-modal/course-modal.service'
+import { FavoriteService } from '../../../services/favorite.service'
 
 @Component({
   selector: 'app-course-list',
@@ -9,21 +9,38 @@ import { CourseModalService } from '../course-modal/course-modal.service'
   styleUrls: ['./course-list.component.scss']
 })
 export class CourseListComponent implements OnInit {
-  courses: Course[] = []
+  @Input()
+  courses!: Course[]
+
+  @Input()
+  mode?: CourseListMode
+
+  CourseListMode = CourseListMode
+  favoriteCourseIdMap: Map<number, boolean>
+
   constructor(
-    private courseService: CourseService,
-    private courseModalService: CourseModalService
+    private courseModalService: CourseModalService,
+    private favoriteService: FavoriteService
   ) {}
 
   ngOnInit(): void {
-    this.getCourses()
-  }
-
-  getCourses(): void {
-    this.courseService.getCourses().subscribe((courses) => (this.courses = courses))
+    this.favoriteService.favoriteCourseIdMap$.subscribe(idMap => this.favoriteCourseIdMap = idMap)
   }
 
   open(courseId: number) {
     this.courseModalService.open(courseId)
   }
+
+  handleToggleFavorite(event: any, courseId: number) {
+    event.stopPropagation()
+    if (this.favoriteCourseIdMap.has(courseId)) {
+      this.favoriteService.deleteUserFavorite(1, courseId).subscribe()
+    } else {
+      this.favoriteService.addUserFavorite(1, courseId).subscribe()
+    }
+  }
+}
+
+export enum CourseListMode {
+  Favorite = 'favorite'
 }

@@ -11,7 +11,8 @@ import { TimetableComponent } from './views/timetable/timetable.component'
 import { NavlinkComponent } from './components/sidebar/navlink/navlink.component'
 import { FilterComponent } from './views/homepage/filter/filter.component'
 import { CourseListComponent } from './views/homepage/course-list/course-list.component'
-import { CourseModalComponent } from './views/homepage/course-modal/course-modal.component'
+import { CourseModalComponent } from './views/homepage/course-modal/course-modal.component';
+import { FavoriteListComponent } from './components/favorite-list/favorite-list.component'
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { CourseModalComponent } from './views/homepage/course-modal/course-modal
     NavlinkComponent,
     FilterComponent,
     CourseListComponent,
-    CourseModalComponent
+    CourseModalComponent,
+    FavoriteListComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],

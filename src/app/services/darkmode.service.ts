@@ -1,6 +1,11 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs'
 
+export enum AppTheme {
+  Light = 'Light',
+  Dark = 'Dark'
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -26,9 +31,4 @@ export class DarkmodeService {
       this.theme.next(AppTheme.Dark)
     }
   }
-}
-
-export enum AppTheme {
-  Light = 'Light',
-  Dark = 'Dark'
 }

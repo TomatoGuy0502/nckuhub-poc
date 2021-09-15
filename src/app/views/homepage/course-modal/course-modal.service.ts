@@ -9,7 +9,7 @@ import { filter, switchMap } from 'rxjs/operators'
   providedIn: 'root'
 })
 export class CourseModalService {
-  private courseId$ = new BehaviorSubject<number>(0)
+  private courseId$ = new BehaviorSubject<number | null>(null)
   private status$ = new BehaviorSubject<CourseModalStatus>(CourseModalStatus.Close)
 
   constructor(
@@ -31,7 +31,7 @@ export class CourseModalService {
     return this.courseId$.pipe(
       filter(id => !!id),
       switchMap(id => {
-        return this.courseService.getCourseWithComments(id)
+        return this.courseService.getCourseWithComments(id as number)
       })
     )
   }
@@ -43,7 +43,7 @@ export class CourseModalService {
   close() {
     this.location.go('/')
     this.status$.next(CourseModalStatus.Close)
-    this.courseId$.next(0)
+    this.courseId$.next(null)
   }
   openAsRoute(courseId: number) {
     this.status$.next(CourseModalStatus.Full)
@@ -51,7 +51,7 @@ export class CourseModalService {
   }
   closeAsRoute() {
     this.status$.next(CourseModalStatus.Close)
-    this.courseId$.next(0)
+    this.courseId$.next(null)
   }
 }
 

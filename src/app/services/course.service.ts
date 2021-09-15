@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
-import { BehaviorSubject, Observable, of } from 'rxjs'
+import { BehaviorSubject, Observable } from 'rxjs'
 import { catchError, tap } from 'rxjs/operators'
 import { Course, CourseWithComments } from '../types/course.type'
+import { handleError } from '../utils/handleError'
 
 @Injectable({
   providedIn: 'root'
@@ -10,34 +11,31 @@ import { Course, CourseWithComments } from '../types/course.type'
 export class CourseService {
   private courseUrl = 'http://localhost:3002/courses'
 
-  private courses = new BehaviorSubject<Course[]>([])
-  courses$ = this.courses.asObservable()
+  courses: Course[] = []
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    this.getCourses()
+  }
 
-  getCourses(): Observable<Course[]> {
-    return this.http
+  private getCourses(): void {
+    this.http
       .get<Course[]>(this.courseUrl)
       .pipe(
         tap(courses => {
-          this.courses.next(courses)
+          courses.forEach(course => this.courses.push(course))
         }),
-        catchError(this.handleError<Course[]>('getCourses', []))
-      )
+        catchError(handleError<Course[]>('getCourses', []))
+      ).subscribe()
+  }
+
+  getCourseById(courseId: number): Course {
+    return this.courses.find(course => course.id === courseId)!
   }
 
   getCourseWithComments(id: number): Observable<CourseWithComments> {
     const url = `${this.courseUrl}/${id}?_embed=comments`
     return this.http
       .get<CourseWithComments>(url)
-      .pipe(catchError(this.handleError<CourseWithComments>(`getCourseWithComments id=${id}`)))
-  }
-
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-      console.error(`${operation} failed:`, error)
-
-      return of(result as T)
-    }
+      .pipe(catchError(handleError<CourseWithComments>(`getCourseWithComments id=${id}`)))
   }
 }

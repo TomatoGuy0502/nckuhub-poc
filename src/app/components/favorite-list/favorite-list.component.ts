@@ -11,18 +11,11 @@ import { CourseListMode } from '../../views/homepage/course-list/course-list.com
   styleUrls: ['./favorite-list.component.scss']
 })
 export class FavoriteListComponent implements OnInit {
-  courses: Course[]
+  favoriteCourses: Course[] = this.favoriteService.favoriteCourses
   courseListMode = CourseListMode.Favorite
 
   constructor(private favoriteService: FavoriteService) {}
 
   ngOnInit(): void {
-    this.getFavorites()
-  }
-
-  getFavorites(): void {
-    this.favoriteService.favoriteCourses$.subscribe(data => {
-      this.courses = data
-    })
   }
 }

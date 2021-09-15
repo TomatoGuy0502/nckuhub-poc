@@ -16,7 +16,7 @@ export class CourseListComponent implements OnInit {
   mode?: CourseListMode
 
   CourseListMode = CourseListMode
-  favoriteCourseIdMap: Map<number, boolean>
+  favoriteCourses = this.favoriteService.favoriteCourses
 
   constructor(
     private courseModalService: CourseModalService,
@@ -24,20 +24,34 @@ export class CourseListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.favoriteService.favoriteCourseIdMap$.subscribe(idMap => this.favoriteCourseIdMap = idMap)
   }
 
-  open(courseId: number) {
+  openModal(courseId: number) {
     this.courseModalService.open(courseId)
   }
 
-  handleToggleFavorite(event: any, courseId: number) {
+  /**
+   * 加入 / 移除我的最愛
+   * @param event Event
+   * @param courseId number
+   * @returns boolean
+   */
+  handleToggleFavorite(event: Event, courseId: number) {
     event.stopPropagation()
-    if (this.favoriteCourseIdMap.has(courseId)) {
-      this.favoriteService.deleteUserFavorite(1, courseId).subscribe()
+    if (this.isInFavorite(courseId)) {
+      this.favoriteService.deleteUserFavorite(courseId).subscribe()
     } else {
-      this.favoriteService.addUserFavorite(1, courseId).subscribe()
+      this.favoriteService.addUserFavorite(courseId).subscribe()
     }
+  }
+
+  /**
+   * 確認某堂課是否已被加入最愛
+   * @param courseId number
+   * @returns boolean
+   */
+  isInFavorite(courseId: number) {
+    return !!this.favoriteCourses.find(course => course.id === courseId)
   }
 }
 

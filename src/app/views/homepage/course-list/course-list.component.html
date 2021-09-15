@@ -3,7 +3,7 @@
     <li
       class="flex items-center min-w-0 px-6 py-3 transition bg-white rounded-md cursor-pointer gap-x-6 hover:bg-teal-100 dark:bg-gray-800 dark:hover:bg-teal-700"
       *ngFor="let course of courses"
-      (click)="open(course.id)"
+      (click)="openModal(course.id)"
     >
       <div
         class="flex items-center flex-shrink-0 rounded-full"
@@ -44,7 +44,7 @@
         >
           <path
             class="text-gray-300 transition group-hover:text-gray-400"
-            [ngClass]="{ 'text-red-400': favoriteCourseIdMap.has(course.id) }"
+            [ngClass]="{ 'text-red-400': isInFavorite(course.id) }"
             *ngIf="mode !== CourseListMode.Favorite; else remove"
             fill-rule="evenodd"
             d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"

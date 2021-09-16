@@ -64,16 +64,16 @@
             </div>
             <div class="flex-1 h-16 p-3 rounded-md bg-lemon-400 bg-opacity-10 dark:bg-opacity-20">
               <p class="text-xs text-gray-500 dark:text-gray-400">涼度</p>
-              <p class="font-bold">{{countAverage(data.comments, 'cold') }}</p>
+              <p class="font-bold">{{ countAverage(data.comments, 'cold') }}</p>
             </div>
           </div>
         </ng-container>
         <ng-template #infoLoading>
-          <h1 class="mb-6 font-bold bg-gray-300 rounded-lg h-9 dark:bg-gray-500"></h1>
-          <div class="h-16 bg-gray-200 rounded-lg dark:bg-gray-600"></div>
-          <div class="h-16 bg-gray-200 rounded-lg dark:bg-gray-600"></div>
-          <div class="h-16 bg-gray-200 rounded-lg dark:bg-gray-600"></div>
-          <div class="h-16 bg-gray-200 rounded-lg dark:bg-gray-600"></div>
+          <h1 class="mb-6 font-bold bg-gray-300 rounded-lg h-9 dark:bg-gray-500 animate-pulse"></h1>
+          <div class="h-16 bg-gray-200 rounded-lg dark:bg-gray-600 animate-pulse"></div>
+          <div class="h-16 bg-gray-200 rounded-lg dark:bg-gray-600 animate-pulse"></div>
+          <div class="h-16 bg-gray-200 rounded-lg dark:bg-gray-600 animate-pulse"></div>
+          <div class="h-16 bg-gray-200 rounded-lg dark:bg-gray-600 animate-pulse"></div>
         </ng-template>
       </div>
       <div class="flex flex-col flex-1 px-8 pt-12 overflow-y-auto gap-y-10">
@@ -87,14 +87,14 @@
               <div class="px-4 py-1 text-sm bg-white rounded-full dark:bg-gray-800">
                 {{ comment.semester }}
               </div>
-              <p>{{ comment.text }}</p>
+              <p class="w-full break-words">{{ comment.text }}</p>
             </li>
           </ng-container>
           <ng-template #commentLoading>
-            <div class="h-32 bg-gray-200 rounded-lg dark:bg-gray-600"></div>
-            <div class="h-32 bg-gray-200 rounded-lg dark:bg-gray-600"></div>
-            <div class="h-32 bg-gray-200 rounded-lg dark:bg-gray-600"></div>
-            <div class="h-32 bg-gray-200 rounded-lg dark:bg-gray-600"></div>
+            <div class="h-32 bg-gray-200 rounded-lg dark:bg-gray-600 animate-pulse"></div>
+            <div class="h-32 bg-gray-200 rounded-lg dark:bg-gray-600 animate-pulse"></div>
+            <div class="h-32 bg-gray-200 rounded-lg dark:bg-gray-600 animate-pulse"></div>
+            <div class="h-32 bg-gray-200 rounded-lg dark:bg-gray-600 animate-pulse"></div>
           </ng-template>
         </ul>
       </div>

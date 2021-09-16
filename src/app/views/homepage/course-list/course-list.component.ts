@@ -10,7 +10,7 @@ import { FavoriteService } from '../../../services/favorite.service'
 })
 export class CourseListComponent implements OnInit {
   @Input()
-  courses!: Course[]
+  courses: Course[] = []
 
   @Input()
   mode?: CourseListMode

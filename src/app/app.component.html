@@ -2,9 +2,11 @@
   <app-sidebar></app-sidebar>
   <div class="flex flex-col flex-1 min-w-0">
     <app-navbar></app-navbar>
-    <div class="flex flex-1">
+    <div class="flex flex-1 overflow-y-auto">
       <router-outlet></router-outlet>
       <app-favorite-list></app-favorite-list>      
     </div>
   </div>
 </div>
+
+<app-comment-form-modal></app-comment-form-modal>

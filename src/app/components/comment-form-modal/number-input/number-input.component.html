@@ -1,0 +1,36 @@
+<div class="flex w-full px-4 py-2 bg-gray-100 rounded-lg dark:bg-gray-700 focus-within:ring-teal-300 focus-within:ring-2 transition">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    class="flex-shrink-0 w-6 h-6 cursor-pointer select-none"
+    [ngClass]="{'cursor-not-allowed text-gray-400': number === 0}"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+    (click)="dec()"
+  >
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 12H6" />
+  </svg>
+  <input
+    type="number"
+    class="flex-1 min-w-0 p-0 text-center bg-transparent border-none appearance-none focus:ring-0"
+    [(ngModel)]="number"
+    min="0"
+    max="10"
+  />
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    class="flex-shrink-0 w-6 h-6 cursor-pointer select-none"
+    [ngClass]="{'cursor-not-allowed text-gray-400': number === 10}"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+    (click)="inc()"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+    />
+  </svg>
+</div>

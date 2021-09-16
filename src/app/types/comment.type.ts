@@ -1,5 +1,5 @@
 export interface Comment {
-  id: number
+  id?: number
   text: string
   got: number
   sweet: number

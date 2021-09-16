@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommentFormModalService, FormData } from 'src/app/components/comment-form-modal/comment-form-modal.service';
+import { CommentFormModalService, FormData } from '../../components/modals/comment-form-modal/comment-form-modal.service';
 import { CommentService } from 'src/app/services/comment.service';
 
 @Component({

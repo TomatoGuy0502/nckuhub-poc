@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { CommentFormModalService } from '../comment-form-modal/comment-form-modal.service'
+import { CommentFormModalService } from '../modals/comment-form-modal/comment-form-modal.service'
 
 @Component({
   selector: 'app-sidebar',

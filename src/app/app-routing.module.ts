@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomepageComponent } from './views/homepage/homepage.component';
-import { CourseModalComponent } from './views/homepage/course-modal/course-modal.component';
+import { CourseModalComponent } from './components/modals/course-modal/course-modal.component';
 import { TimetableComponent } from './views/timetable/timetable.component';
 import { UserComponent } from './views/user/user.component'
 

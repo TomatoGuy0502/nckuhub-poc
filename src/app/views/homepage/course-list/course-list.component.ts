@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core'
 import { Course } from '../../../types/course.type'
-import { CourseModalService } from '../course-modal/course-modal.service'
+import { CourseModalService } from '../../../components/modals/course-modal/course-modal.service'
 import { FavoriteService } from '../../../services/favorite.service'
 
 @Component({

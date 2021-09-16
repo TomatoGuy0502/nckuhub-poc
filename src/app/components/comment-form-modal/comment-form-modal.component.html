@@ -102,7 +102,7 @@
           [disabled]="commentForm.invalid"
           type="submit"
         >
-          送出
+          {{ commentId ? '儲存變更' : '送出'}}
         </button>
       </div>
     </form>

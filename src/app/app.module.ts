@@ -16,7 +16,8 @@ import { CourseModalComponent } from './views/homepage/course-modal/course-modal
 import { FavoriteListComponent } from './components/favorite-list/favorite-list.component';
 import { CommentFormModalComponent } from './components/comment-form-modal/comment-form-modal.component';
 import { BackdropComponent } from './components/backdrop/backdrop.component';
-import { NumberInputComponent } from './components/comment-form-modal/number-input/number-input.component'
+import { NumberInputComponent } from './components/comment-form-modal/number-input/number-input.component';
+import { UserComponent } from './views/user/user.component'
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { NumberInputComponent } from './components/comment-form-modal/number-inp
     FavoriteListComponent,
     CommentFormModalComponent,
     BackdropComponent,
-    NumberInputComponent
+    NumberInputComponent,
+    UserComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],

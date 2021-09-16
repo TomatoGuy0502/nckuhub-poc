@@ -1,3 +1,5 @@
+import { Course } from "./course.type";
+
 export interface Comment {
   id?: number
   text: string
@@ -7,4 +9,8 @@ export interface Comment {
   semester: string
   courseId: number
   userId: number
+}
+
+export interface CommentWithCourse extends Comment {
+  course: Course
 }

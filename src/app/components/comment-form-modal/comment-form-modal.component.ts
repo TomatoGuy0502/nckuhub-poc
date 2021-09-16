@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, Input } from '@angular/core'
 import { CommentService } from 'src/app/services/comment.service'
 import { CourseService } from 'src/app/services/course.service'
-import { CommentFormModalService } from './comment-form-modal.service'
+import { CommentFormModalService, FormData } from './comment-form-modal.service'
 
 @Component({
   selector: 'app-comment-form-modal',
@@ -10,40 +10,49 @@ import { CommentFormModalService } from './comment-form-modal.service'
 })
 export class CommentFormModalComponent implements OnInit {
   isOpen$ = this.commentFormModalService.isOpen$
+  commentId: number | null
 
-  formData = {
-    got: 5,
-    sweet: 5,
-    cold: 5,
-    text: '',
-    semester: '',
-    courseId: null as null | number
-  }
+  formData:　FormData
 
   courses = this.courseService.courses
 
   semesterOptions = this.generateSemesters(10)
   
-  handleSubmit() {
-    console.log(this.formData)
-    if (this.formData.text.length < 50 || !this.formData.courseId || !this.formData.semester.length) {
-      alert('欄位不正確')
-      return
-    }
-    this.commentService.addComment({
-      ...this.formData,
-      userId: 1,
-      courseId: ~~this.formData.courseId
-    }).subscribe(() => this.close())
-  }
-
+  
   constructor(
     private commentFormModalService: CommentFormModalService,
     private courseService: CourseService,
     private commentService: CommentService
   ) {}
-
-  ngOnInit(): void {}
+    
+  ngOnInit(): void {
+    this.commentFormModalService.defaultFormData$.subscribe((formData) => {
+      this.formData = formData
+    })
+    this.commentFormModalService.commentId$.subscribe(commentId => this.commentId = commentId)
+  }
+    
+  handleSubmit() {
+    if (this.formData.text.length < 50 || !this.formData.courseId || !this.formData.semester.length) {
+      alert('欄位不正確')
+      return
+    }
+    if (this.commentId) {
+      // 更新
+      this.commentService.updateComment(this.commentId!, {
+        ...this.formData,
+        userId: 1,
+        courseId: ~~this.formData.courseId
+      }).subscribe(() => this.close())
+    } else {
+      // 新增
+      this.commentService.addComment({
+        ...this.formData,
+        userId: 1,
+        courseId: ~~this.formData.courseId
+      }).subscribe(() => this.close())
+    }
+  }
 
   close() {
     this.commentFormModalService.close()

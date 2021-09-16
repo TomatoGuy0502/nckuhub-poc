@@ -17,7 +17,8 @@ import { FavoriteListComponent } from './components/favorite-list/favorite-list.
 import { CommentFormModalComponent } from './components/modals/comment-form-modal/comment-form-modal.component';
 import { BackdropComponent } from './components/backdrop/backdrop.component';
 import { NumberInputComponent } from './components/modals/comment-form-modal/number-input/number-input.component';
-import { UserComponent } from './views/user/user.component'
+import { UserComponent } from './views/user/user.component';
+import { PageNotFoundComponent } from './views/page-not-found/page-not-found.component'
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { UserComponent } from './views/user/user.component'
     CommentFormModalComponent,
     BackdropComponent,
     NumberInputComponent,
-    UserComponent
+    UserComponent,
+    PageNotFoundComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],

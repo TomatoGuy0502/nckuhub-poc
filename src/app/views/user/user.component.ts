@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CommentFormModalService, FormData } from '../../components/modals/comment-form-modal/comment-form-modal.service';
+import { CommentFormModalService, FormData } from 'src/app/components/modals/comment-form-modal/comment-form-modal.service';
 import { CommentService } from 'src/app/services/comment.service';
+import { CourseModalService } from 'src/app/components/modals/course-modal/course-modal.service';
 
 @Component({
   selector: 'app-user',
@@ -10,16 +11,26 @@ import { CommentService } from 'src/app/services/comment.service';
 export class UserComponent implements OnInit {
   comments = this.commentService.comments
 
-  constructor(private commentService: CommentService, private commentFormModalService: CommentFormModalService) { }
+  constructor(
+    private commentService: CommentService,
+    private commentFormModalService: CommentFormModalService,
+    private courseModalService: CourseModalService
+  ) { }
 
   ngOnInit(): void {
   }
 
-  openModal(formData: FormData, commentId: number) {
-    this.commentFormModalService.open(formData, commentId)
+  openCourseModal(courseId: number) {
+    this.courseModalService.open(courseId)
   }
 
-  deleteComment(commentId: number) {
+  editComment(e: Event, formData: FormData, commentId: number) {
+    e.stopPropagation()
+    this.commentFormModalService.open(formData, commentId)
+  }
+  
+  deleteComment(e: Event, commentId: number) {
+    e.stopPropagation()
     this.commentService.deleteComment(commentId).subscribe()
   }
 }

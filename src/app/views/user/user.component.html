@@ -10,6 +10,7 @@
         <li
           class="flex items-center min-w-0 px-6 py-3 transition bg-white rounded-md gap-x-6 hover:bg-teal-100 dark:bg-gray-800 dark:hover:bg-teal-700"
           *ngFor="let comment of comments"
+          (click)="openCourseModal(comment.courseId)"
         >
           <div
             class="flex items-center flex-shrink-0 rounded-full"
@@ -47,8 +48,8 @@
           </div>
           <div class="flex gap-2 ml-auto">
             <div
-              class="flex items-center justify-center flex-shrink-0 w-12 h-12 bg-gray-100 rounded-full group"
-              (click)="openModal(comment, comment.id!)"
+              class="flex items-center justify-center flex-shrink-0 w-12 h-12 bg-gray-100 rounded-full cursor-pointer group"
+              (click)="editComment($event, comment, comment.id!)"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -58,7 +59,7 @@
                 stroke="currentColor"
               >
                 <path
-                  class="text-gray-300 transition group-hover:text-gray-400"
+                  class="text-gray-300 transition group-hover:text-teal-400"
                   stroke-linecap="round"
                   stroke-linejoin="round"
                   stroke-width="2"
@@ -67,8 +68,8 @@
               </svg>
             </div>
             <div
-              class="flex items-center justify-center flex-shrink-0 w-12 h-12 ml-auto bg-gray-100 rounded-full group"
-              (click)="deleteComment(comment.id!)"
+              class="flex items-center justify-center flex-shrink-0 w-12 h-12 bg-gray-100 rounded-full cursor-pointer group"
+              (click)="deleteComment($event, comment.id!)"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"

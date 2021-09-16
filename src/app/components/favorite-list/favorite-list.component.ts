@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core'
-import { Subscription } from 'rxjs'
-import { delay, map } from 'rxjs/operators'
 import { FavoriteService } from '../../services/favorite.service'
 import { Course } from '../../types/course.type'
 import { CourseListMode } from '../../views/homepage/course-list/course-list.component'

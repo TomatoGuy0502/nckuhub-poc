@@ -5,12 +5,13 @@ import { CourseModalComponent } from './components/modals/course-modal/course-mo
 import { TimetableComponent } from './views/timetable/timetable.component';
 import { UserComponent } from './views/user/user.component'
 import { PageNotFoundComponent } from './views/page-not-found/page-not-found.component'
+import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
   { path: 'course/:courseId', component: CourseModalComponent },
-  { path: 'timetable', component: TimetableComponent },
-  { path: 'user', component: UserComponent },
+  { path: 'timetable', component: TimetableComponent, canActivate: [AuthGuard] },
+  { path: 'user', component: UserComponent, canActivate: [AuthGuard] },
   { path: '**', component: PageNotFoundComponent }
 ];
 

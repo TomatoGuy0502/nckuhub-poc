@@ -11,3 +11,5 @@
 
 <app-course-modal></app-course-modal>
 <app-comment-form-modal></app-comment-form-modal>
+
+<app-loading *ngIf="(authIsLoaded$ | async)"></app-loading>

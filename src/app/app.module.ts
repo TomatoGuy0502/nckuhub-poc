@@ -21,7 +21,8 @@ import { BackdropComponent } from './components/backdrop/backdrop.component'
 import { NumberInputComponent } from './components/modals/comment-form-modal/number-input/number-input.component'
 import { UserComponent } from './views/user/user.component'
 import { PageNotFoundComponent } from './views/page-not-found/page-not-found.component'
-import { environment } from '../environments/environment'
+import { environment } from '../environments/environment';
+import { LoadingComponent } from './components/loading/loading.component'
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { environment } from '../environments/environment'
     BackdropComponent,
     NumberInputComponent,
     UserComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,

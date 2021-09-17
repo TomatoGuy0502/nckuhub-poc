@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
-import { Observable } from 'rxjs'
+import { Observable, of } from 'rxjs'
 import { catchError, switchMap, tap } from 'rxjs/operators'
 import { CourseService } from './course.service'
 import { AuthService } from './auth.service'
@@ -24,7 +24,7 @@ export class FavoriteService {
     })
   }
 
-  getCurrentUserFavorites(): void {
+  private getCurrentUserFavorites(): void {
     if (!this.userId) {
       this.favoriteCourses.length = 0
       return
@@ -43,7 +43,10 @@ export class FavoriteService {
       .subscribe()
   }
 
-  addUserFavorite(courseId: number): Observable<Favorite> {
+  private addUserFavorite(courseId: number): Observable<any> {
+    if (!this.userId) {
+      return of(null)
+    }
     const url = this.favoriteUrl
 
     this.favoriteCourses.push(this.courseService.getCourseById(courseId))
@@ -53,7 +56,7 @@ export class FavoriteService {
       .pipe(catchError(handleError<Favorite>('addUserFavorite')))
   }
 
-  deleteUserFavorite(courseId: number): Observable<{}> {
+  private deleteUserFavorite(courseId: number): Observable<any> {
     const url = `${this.favoriteUrl}?userId=${this.userId}&courseId=${courseId}`
 
     const indexToDelete = this.favoriteCourses.findIndex(course => course.id === courseId)
@@ -67,5 +70,27 @@ export class FavoriteService {
       }),
       catchError(handleError<any>('deleteUserFavorite'))
     )
+  }
+
+  /**
+   * 判斷是要加入或移出最愛
+   * @param courseId number
+   * @returns void
+   */
+  toggleFavorite(courseId: number) {
+    if (this.isInFavorite(courseId)) {
+      this.deleteUserFavorite(courseId).subscribe()
+    } else {
+      this.addUserFavorite(courseId).subscribe()
+    }
+  }
+
+  /**
+   * 確認某堂課是否已被加入最愛
+   * @param courseId number
+   * @returns boolean
+   */
+  isInFavorite(courseId: number) {
+    return !!this.favoriteCourses.find(course => course.id === courseId)
   }
 }

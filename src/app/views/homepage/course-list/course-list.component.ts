@@ -17,6 +17,7 @@ export class CourseListComponent implements OnInit {
 
   CourseListMode = CourseListMode
   favoriteCourses = this.favoriteService.favoriteCourses
+  isInFavorite = this.favoriteService.isInFavorite
 
   constructor(
     private courseModalService: CourseModalService,
@@ -38,21 +39,9 @@ export class CourseListComponent implements OnInit {
    */
   handleToggleFavorite(event: Event, courseId: number) {
     event.stopPropagation()
-    if (this.isInFavorite(courseId)) {
-      this.favoriteService.deleteUserFavorite(courseId).subscribe()
-    } else {
-      this.favoriteService.addUserFavorite(courseId).subscribe()
-    }
+    this.favoriteService.toggleFavorite(courseId)
   }
 
-  /**
-   * 確認某堂課是否已被加入最愛
-   * @param courseId number
-   * @returns boolean
-   */
-  isInFavorite(courseId: number) {
-    return !!this.favoriteCourses.find(course => course.id === courseId)
-  }
 }
 
 export enum CourseListMode {

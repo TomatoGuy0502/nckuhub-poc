@@ -162,13 +162,34 @@
     },
     {
       "got": 5,
-      "sweet": 10,
-      "cold": 5,
+      "sweet": 9,
+      "cold": 10,
       "text": "H34066131林彥廷\nH34066131林彥廷H34066131林彥廷\nH34066131林彥廷H34066131林彥廷H34066131林彥廷",
       "semester": "109-1",
       "courseId": 1,
       "userId": "0hZtnXFh23SdYoxVbrGN0uvWAt03",
-      "id": 11
+      "id": 11,
+      "course": {
+        "id": 1,
+        "系號": "A1",
+        "選課序號": "512",
+        "課程名稱": "日文（一）",
+        "老師": "井上智鶴, 井上智鶴",
+        "時間": "[4]3~4",
+        "學分": 2,
+        "系所名稱": "外語中心 FLC",
+        "心得數量": 3
+      }
+    },
+    {
+      "got": 8,
+      "sweet": 10,
+      "cold": 10,
+      "text": "林彥廷林彥廷林彥廷\n林彥廷林彥廷林彥廷林彥廷\n林彥廷林彥廷林彥廷林彥廷林彥廷\n林彥廷林彥廷林彥廷林彥廷林彥廷林彥廷",
+      "semester": "110-1",
+      "courseId": 1,
+      "userId": "GZ4Y08wJs0h3UtJxhZ8oN0pC6g43",
+      "id": 12
     }
   ],
   "favorites": [
@@ -184,13 +205,18 @@
     },
     {
       "userId": "0hZtnXFh23SdYoxVbrGN0uvWAt03",
-      "courseId": 2,
-      "id": 4
+      "courseId": 3,
+      "id": 11
     },
     {
       "userId": "0hZtnXFh23SdYoxVbrGN0uvWAt03",
-      "courseId": 4,
-      "id": 5
+      "courseId": 1,
+      "id": 12
+    },
+    {
+      "userId": "0hZtnXFh23SdYoxVbrGN0uvWAt03",
+      "courseId": 2,
+      "id": 13
     }
   ]
 }

@@ -1,12 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { GoogleAuthProvider, UserCredential } from 'firebase/auth';
+import { GoogleAuthProvider } from 'firebase/auth';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 
 import { User } from '../types/user.type';
-import { switchMap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -17,40 +15,17 @@ export class AuthService {
   constructor(
     private router: Router,
     private afAuth: AngularFireAuth,
-    private afStore: AngularFirestore
   ) {
-    this.user$ = this.afAuth.authState.pipe(
-      switchMap(user => {
-        if (user) {
-          return this.afStore.doc<User>(`users/${user.uid}`).valueChanges() as Observable<User>
-        } else {
-          return of(null)
-        }
-      })
-    )
+    this.user$ = this.afAuth.authState
   }
 
   async googleSignin() {
     try {
       const provider = new GoogleAuthProvider();
-      const credential = await this.afAuth.signInWithPopup(provider);
-      return this.updateUserData(credential.user!);
+      await this.afAuth.signInWithPopup(provider);
     } catch (error) {
       console.error(error);
     }
-  }
-
-  private updateUserData(user: any) {
-    const userRef: AngularFirestoreDocument<User> = this.afStore.doc(`users/${user.uid}`);
-
-    const data = { 
-      uid: user.uid, 
-      email: user.email, 
-      displayName: user.displayName,
-      photoURL: user.photoURL
-    } 
-
-    return userRef.set(data, { merge: true })
   }
 
   async signOut() {

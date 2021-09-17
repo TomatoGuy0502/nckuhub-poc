@@ -1,14 +1,4 @@
 {
-  "users": [
-    {
-      "name": "林彥廷",
-      "id": 1
-    },
-    {
-      "name": "TomatoGuy",
-      "id": 2
-    }
-  ],
   "courses": [
     {
       "id": 1,
@@ -171,76 +161,36 @@
       }
     },
     {
-      "got": 10,
-      "sweet": 10,
-      "cold": 10,
-      "text": "h34066131的心得\nh34066131的心得h34066131的心得\nh34066131的心得h34066131的心得h34066131的心得",
-      "semester": "110-2",
-      "courseId": 2,
-      "userId": 1,
-      "id": 11
-    },
-    {
       "got": 5,
       "sweet": 10,
       "cold": 5,
-      "text": "林彥廷提供的心得\n林彥廷提供的心得林彥廷提供的心得林彥廷提供的心得\n林彥廷提供的心得林彥廷提供的心得",
-      "semester": "109-2",
-      "courseId": 4,
-      "userId": "GZ4Y08wJs0h3UtJxhZ8oN0pC6g43",
-      "id": 12
-    },
-    {
-      "got": 5,
-      "sweet": 10,
-      "cold": 5,
-      "text": "H34066131林彥廷的心得\nH34066131林彥廷的心得H34066131林彥廷的心得\nH34066131林彥廷的心得H34066131林彥廷的心得H34066131林彥廷的心得",
-      "semester": "110-2",
-      "courseId": 3,
+      "text": "H34066131林彥廷\nH34066131林彥廷H34066131林彥廷\nH34066131林彥廷H34066131林彥廷H34066131林彥廷",
+      "semester": "109-1",
+      "courseId": 1,
       "userId": "0hZtnXFh23SdYoxVbrGN0uvWAt03",
-      "id": 13
+      "id": 11
     }
   ],
   "favorites": [
     {
-      "id": 3,
-      "userId": 2,
-      "courseId": 3
+      "userId": "GZ4Y08wJs0h3UtJxhZ8oN0pC6g43",
+      "courseId": 1,
+      "id": 1
     },
     {
-      "userId": 1,
+      "userId": "GZ4Y08wJs0h3UtJxhZ8oN0pC6g43",
       "courseId": 4,
-      "id": 28
-    },
-    {
-      "userId": 1,
-      "courseId": 2,
-      "id": 29
-    },
-    {
-      "userId": 1,
-      "courseId": 3,
-      "id": 30
-    },
-    {
-      "userId": "GZ4Y08wJs0h3UtJxhZ8oN0pC6g43",
-      "courseId": 2,
-      "id": 31
-    },
-    {
-      "userId": "GZ4Y08wJs0h3UtJxhZ8oN0pC6g43",
-      "courseId": 3,
-      "id": 32
+      "id": 3
     },
     {
       "userId": "0hZtnXFh23SdYoxVbrGN0uvWAt03",
       "courseId": 2,
-      "id": 33
+      "id": 4
     },
     {
       "userId": "0hZtnXFh23SdYoxVbrGN0uvWAt03",
-      "courseId": 3,
-      "id": 34
+      "courseId": 4,
+      "id": 5
     }
   ]
 }

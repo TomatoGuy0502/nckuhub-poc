@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs'
 import { catchError, switchMap, tap } from 'rxjs/operators'
 import { CourseService } from './course.service'
+import { AuthService } from './auth.service'
 import { Favorite, FavoriteWithCourse } from '../types/favorite.type'
 import { Course } from '../types/course.type'
 import { handleError } from '../utils/handleError'
@@ -11,13 +12,16 @@ import { handleError } from '../utils/handleError'
   providedIn: 'root'
 })
 export class FavoriteService {
-  private userId = 1 // TODO: 使用user service
+  private userId?: string
   private favoriteUrl = 'http://localhost:3002/favorites'
 
   favoriteCourses: Course[] = []
 
-  constructor(private http: HttpClient, private courseService: CourseService) {
-    this.getCurrentUserFavorites() // TODO: 等到user service確認使用者是誰才抓資料
+  constructor(private http: HttpClient, private courseService: CourseService, private auth: AuthService) {
+    this.auth.user$.subscribe(user => {
+      this.userId = user?.uid
+      this.getCurrentUserFavorites()
+    })
   }
 
   getCurrentUserFavorites(): void {
@@ -27,6 +31,7 @@ export class FavoriteService {
       .get<FavoriteWithCourse[]>(url)
       .pipe(
         tap(data => {
+          this.favoriteCourses.length = 0
           data.forEach(fav => this.favoriteCourses.push(fav.course))
         }),
         catchError(handleError<FavoriteWithCourse[]>('getCurrentUserFavorites', []))

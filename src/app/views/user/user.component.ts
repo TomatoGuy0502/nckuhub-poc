@@ -18,6 +18,7 @@ export class UserComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.commentService.getCurrentUserComments()
   }
 
   openCourseModal(courseId: number) {

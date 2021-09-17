@@ -8,7 +8,7 @@ export interface Comment {
   cold: number
   semester: string
   courseId: number
-  userId: number
+  userId?: string
 }
 
 export interface CommentWithCourse extends Comment {

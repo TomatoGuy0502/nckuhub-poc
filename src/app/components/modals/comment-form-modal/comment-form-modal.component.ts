@@ -12,45 +12,44 @@ export class CommentFormModalComponent implements OnInit {
   isOpen$ = this.commentFormModalService.isOpen$
   commentId: number | null
 
-  formData:　FormData
+  formData: FormData
 
   courses = this.courseService.courses
 
   semesterOptions = this.generateSemesters(10)
-  
-  
+
   constructor(
     private commentFormModalService: CommentFormModalService,
     private courseService: CourseService,
     private commentService: CommentService
   ) {}
-    
+
   ngOnInit(): void {
-    this.commentFormModalService.defaultFormData$.subscribe((formData) => {
+    this.commentFormModalService.defaultFormData$.subscribe(formData => {
       this.formData = formData
     })
-    this.commentFormModalService.commentId$.subscribe(commentId => this.commentId = commentId)
+    this.commentFormModalService.commentId$.subscribe(commentId => (this.commentId = commentId))
   }
-    
+
   handleSubmit() {
-    if (this.formData.text.length < 50 || !this.formData.courseId || !this.formData.semester.length) {
+    if (
+      this.formData.text.length < 50 ||
+      !this.formData.courseId ||
+      !this.formData.semester.length
+    ) {
       alert('欄位不正確')
       return
     }
     if (this.commentId) {
       // 更新
-      this.commentService.updateComment(this.commentId!, {
-        ...this.formData,
-        userId: 1,
-        courseId: ~~this.formData.courseId
-      }).subscribe(() => this.close())
+      this.commentService
+        .updateComment(this.commentId!, { ...this.formData, courseId: ~~this.formData.courseId })
+        .subscribe(() => this.close())
     } else {
       // 新增
-      this.commentService.addComment({
-        ...this.formData,
-        userId: 1,
-        courseId: ~~this.formData.courseId
-      }).subscribe(() => this.close())
+      this.commentService
+        .addComment({ ...this.formData, courseId: ~~this.formData.courseId })
+        .subscribe(() => this.close())
     }
   }
 

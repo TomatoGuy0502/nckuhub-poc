@@ -17,7 +17,6 @@ export class CourseModalService {
     private location: Location
   ) {
     this.location.onUrlChange(url => {
-      console.log(url)
       if (url === '') {
         this.status$.next(CourseModalStatus.Close)
       }

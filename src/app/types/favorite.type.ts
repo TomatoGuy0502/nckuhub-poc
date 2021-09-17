@@ -2,7 +2,7 @@ import { Course } from "./course.type";
 
 export interface Favorite {
   id: number
-  userId: number
+  userId: string
   courseId: number
 }
 

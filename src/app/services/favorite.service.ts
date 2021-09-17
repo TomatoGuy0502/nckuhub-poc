@@ -25,6 +25,10 @@ export class FavoriteService {
   }
 
   getCurrentUserFavorites(): void {
+    if (!this.userId) {
+      this.favoriteCourses.length = 0
+      return
+    }
     const url = `${this.favoriteUrl}?userId=${this.userId}&_expand=course`
 
     this.http
@@ -57,6 +61,7 @@ export class FavoriteService {
 
     return this.http.get<Favorite[]>(url).pipe(
       switchMap(fav => {
+        console.log(fav)
         const url = `${this.favoriteUrl}/${fav[0].id}`
         return this.http.delete(url)
       }),

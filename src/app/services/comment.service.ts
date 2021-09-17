@@ -22,7 +22,10 @@ export class CommentService {
   comments: CommentWithCourse[] = []
 
   getCurrentUserComments() {
-    if (this.comments.length) return
+    if (!this.userId) {
+      this.comments.length = 0
+      return
+    }
     const url = `${this.commentUrl}?userId=${this.userId}&_expand=course`
 
     this.http

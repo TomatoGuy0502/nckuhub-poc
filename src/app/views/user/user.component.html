@@ -8,7 +8,7 @@
     <div>
       <ul class="flex flex-col gap-y-0.5">
         <li
-          class="flex items-center min-w-0 px-6 py-3 transition bg-white rounded-md gap-x-6 hover:bg-teal-100 dark:bg-gray-800 dark:hover:bg-teal-700"
+          class="flex items-center min-w-0 px-6 py-3 transition bg-white rounded-md cursor-pointer gap-x-6 hover:bg-teal-100 dark:bg-gray-800 dark:hover:bg-teal-700"
           *ngFor="let comment of comments"
           (click)="openCourseModal(comment.courseId)"
         >
@@ -48,7 +48,7 @@
           </div>
           <div class="flex gap-2 ml-auto">
             <div
-              class="flex items-center justify-center flex-shrink-0 w-12 h-12 bg-gray-100 rounded-full cursor-pointer group"
+              class="flex items-center justify-center flex-shrink-0 w-12 h-12 bg-gray-100 rounded-full cursor-pointer dark:bg-gray-700 group"
               (click)="editComment($event, comment, comment.id!)"
             >
               <svg
@@ -59,7 +59,7 @@
                 stroke="currentColor"
               >
                 <path
-                  class="text-gray-300 transition group-hover:text-teal-400"
+                  class="text-gray-300 transition group-hover:text-teal-400 dark:text-gray-800 dark:group-hover:text-teal-500"
                   stroke-linecap="round"
                   stroke-linejoin="round"
                   stroke-width="2"
@@ -68,7 +68,7 @@
               </svg>
             </div>
             <div
-              class="flex items-center justify-center flex-shrink-0 w-12 h-12 bg-gray-100 rounded-full cursor-pointer group"
+              class="flex items-center justify-center flex-shrink-0 w-12 h-12 bg-gray-100 rounded-full cursor-pointer dark:bg-gray-700 group"
               (click)="deleteComment($event, comment.id!)"
             >
               <svg
@@ -79,7 +79,7 @@
                 stroke="currentColor"
               >
                 <path
-                  class="text-gray-300 transition group-hover:text-red-400"
+                  class="text-gray-300 transition group-hover:text-red-400 dark:text-gray-800 dark:group-hover:text-red-400"
                   stroke-linecap="round"
                   stroke-linejoin="round"
                   stroke-width="2"

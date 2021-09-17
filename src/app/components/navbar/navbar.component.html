@@ -3,8 +3,8 @@
     <p class="text-gray-800 dark:text-gray-300">嗨，{{ (auth.user$ | async)?.displayName || '訪客' }}</p>
     <p class="text-gray-400">
       歡迎{{ (auth.user$ | async) ? '回來' : '來訪' }}！
-      <span (click)="auth.googleSignin()">登入</span>
-      <span (click)="auth.signOut()">登出</span>
+      <span class="cursor-pointer" *ngIf="!(auth.user$ | async)" (click)="auth.googleSignin()">登入</span>
+      <span class="cursor-pointer" *ngIf="(auth.user$ | async)" (click)="auth.signOut()">登出</span>
     </p>
   </h1>
   <div class="flex items-center w-1/2 px-4 py-2 bg-gray-100 rounded-lg dark:bg-gray-700">

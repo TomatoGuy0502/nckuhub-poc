@@ -36,22 +36,22 @@
         "
       >
         <ng-container *ngIf="data; else infoLoading">
-          <h1 class="mb-6 text-3xl font-bold">{{ data['課程名稱'] }}</h1>
+          <h1 class="mb-6 text-3xl font-bold">{{ data.name }}</h1>
           <div class="p-3 bg-white rounded-lg dark:bg-gray-800">
             <p class="text-xs text-gray-500 dark:text-gray-400">課程編號</p>
-            <h2>{{ data['系號'] }}{{ data['選課序號'] }}</h2>
+            <h2>{{ data.department.id }}{{ data.code }}</h2>
           </div>
           <div class="p-3 bg-white rounded-lg dark:bg-gray-800">
             <p class="text-xs text-gray-500 dark:text-gray-400">開課單位</p>
-            <h2>{{ data['系所名稱'] }}</h2>
+            <h2>{{ data.name }}</h2>
           </div>
           <div class="p-3 bg-white rounded-lg dark:bg-gray-800">
             <p class="text-xs text-gray-500 dark:text-gray-400">開課老師</p>
-            <h2>{{ data['老師'] }}</h2>
+            <h2>{{ data.teacher }}</h2>
           </div>
           <div class="p-3 bg-white rounded-lg dark:bg-gray-800">
             <p class="text-xs text-gray-500 dark:text-gray-400">開課時段</p>
-            <h2>{{ data['時間'] }}</h2>
+            <h2>{{ data.time }}</h2>
           </div>
           <div class="flex justify-between text-center gap-x-4">
             <div class="flex-1 h-16 p-3 bg-indigo-400 rounded-md bg-opacity-10 dark:bg-opacity-20">

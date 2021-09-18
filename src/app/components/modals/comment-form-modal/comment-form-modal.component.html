@@ -46,7 +46,7 @@
             >
               <option [value]="null" disabled>請選擇課程</option>
               <option [value]="course.id" *ngFor="let course of courses">
-                {{ course['課程名稱'] }}
+                {{ course.name }}
               </option>
             </select>
           </div>

@@ -13,7 +13,7 @@ import { handleError } from '../utils/handleError'
 })
 export class FavoriteService {
   private userId?: string
-  private favoriteUrl = 'http://localhost:3002/favorites'
+  private favoriteUrl = (userId: string) => `http://localhost:3000/users/${userId}/favorites`
 
   favoriteCourses: Course[] = []
 
@@ -29,16 +29,15 @@ export class FavoriteService {
       this.favoriteCourses.length = 0
       return
     }
-    const url = `${this.favoriteUrl}?userId=${this.userId}&_expand=course`
 
     this.http
-      .get<FavoriteWithCourse[]>(url)
+      .get<Course[]>(this.favoriteUrl(this.userId))
       .pipe(
         tap(data => {
           this.favoriteCourses.length = 0
-          data.forEach(fav => this.favoriteCourses.push(fav.course))
+          data.forEach(course => this.favoriteCourses.push(course))
         }),
-        catchError(handleError<FavoriteWithCourse[]>('getCurrentUserFavorites', []))
+        catchError(handleError<Course[]>('getCurrentUserFavorites', []))
       )
       .subscribe()
   }
@@ -47,29 +46,23 @@ export class FavoriteService {
     if (!this.userId) {
       return of(null)
     }
-    const url = this.favoriteUrl
 
     this.favoriteCourses.push(this.courseService.getCourseById(courseId))
 
     return this.http
-      .post<Favorite>(url, { userId: this.userId, courseId })
+      .post<Favorite>(this.favoriteUrl(this.userId), { userId: this.userId, courseId })
       .pipe(catchError(handleError<Favorite>('addUserFavorite')))
   }
 
   private deleteUserFavorite(courseId: number): Observable<any> {
-    const url = `${this.favoriteUrl}?userId=${this.userId}&courseId=${courseId}`
+    if (!this.userId) {
+      return of(null)
+    }
 
     const indexToDelete = this.favoriteCourses.findIndex(course => course.id === courseId)
     this.favoriteCourses.splice(indexToDelete, 1)
 
-    return this.http.get<Favorite[]>(url).pipe(
-      switchMap(fav => {
-        console.log(fav)
-        const url = `${this.favoriteUrl}/${fav[0].id}`
-        return this.http.delete(url)
-      }),
-      catchError(handleError<any>('deleteUserFavorite'))
-    )
+    return this.http.delete(this.favoriteUrl(this.userId), { body: { courseId } })
   }
 
   /**

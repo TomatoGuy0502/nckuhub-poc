@@ -10,7 +10,7 @@ import { AuthService } from './auth.service'
 })
 export class CommentService {
   private userId?: string
-  private commentUrl = 'http://localhost:3002/comments'
+  private commentUrl = 'http://localhost:3000/comments'
 
   constructor(private http: HttpClient, private auth: AuthService) {
     this.auth.user$.subscribe(user => {
@@ -26,7 +26,7 @@ export class CommentService {
       this.comments.length = 0
       return
     }
-    const url = `${this.commentUrl}?userId=${this.userId}&_expand=course`
+    const url = `${this.commentUrl}?userId=${this.userId}`
 
     this.http
       .get<CommentWithCourse[]>(url)
@@ -40,9 +40,9 @@ export class CommentService {
       .subscribe()
   }
 
-  addComment(comment: Comment): Observable<CommentWithCourse> {
+  addComment(comment: Comment): Observable<Comment> {
     return this.http
-      .post<CommentWithCourse>(this.commentUrl, {
+      .post<Comment>(this.commentUrl, {
         ...comment,
         userId: this.userId
       })
@@ -51,7 +51,7 @@ export class CommentService {
           this.comments.length = 0
           this.getCurrentUserComments()
         }), 
-        catchError(handleError<CommentWithCourse>('addComment'))
+        catchError(handleError<Comment>('addComment'))
       )
   }
 

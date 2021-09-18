@@ -8,28 +8,28 @@
       <div
         class="flex items-center flex-shrink-0 rounded-full"
         [ngClass]="{
-          'bg-red-100 dark:bg-red-400': course['系號'] === 'A9',
-          'bg-green-100 dark:bg-green-400': course['系號'] === 'A1'
+          'bg-red-100 dark:bg-red-400': course.department.id === 'A9',
+          'bg-green-100 dark:bg-green-400': course.department.id === 'A1'
         }"
       >
         <p
           class="grid w-12 h-12 font-medium text-white rounded-full select-none place-items-center"
           [ngClass]="{
-            'bg-red-400 dark:bg-red-500': course['系號'] === 'A9',
-            'bg-green-400 dark:bg-green-500': course['系號'] === 'A1'
+            'bg-red-400 dark:bg-red-500': course.department.id === 'A9',
+            'bg-green-400 dark:bg-green-500': course.department.id === 'A1'
           }"
         >
-          {{ course['系所名稱'][0] }}
+          {{ course.department.name[0] }}
         </p>
         <p class="px-4 text-sm rounded-r-full dark:text-white">
-          {{ course['系號'] }}-{{ course['選課序號'] }}
+          {{ course.department.id }}-{{ course.code }}
         </p>
       </div>
       <div class="flex flex-col min-w-0 overflow-hidden">
-        <p class="font-medium truncate" title="{{ course['課程名稱'] }}">{{ course['課程名稱'] }}</p>
-        <p class="text-sm text-gray-400 truncate" title="{{ course['系所名稱'] }} — {{ course['時間'] }} — {{ course['老師'] }}">
-          <span *ngIf="mode !== CourseListMode.Favorite">{{ course['系所名稱'] }} — </span
-          >{{ course['時間'] }} — {{ course['老師'] }}
+        <p class="font-medium truncate" title="{{ course.name }}">{{ course.name }}</p>
+        <p class="text-sm text-gray-400 truncate" title="{{ course.department.name }} — {{ course.time }} — {{ course.teacher }}">
+          <span *ngIf="mode !== CourseListMode.Favorite">{{ course.department.name }} — </span
+          >{{ course.time }} — {{ course.teacher }}
         </p>
       </div>
       <div

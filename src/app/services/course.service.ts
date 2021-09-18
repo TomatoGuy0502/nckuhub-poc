@@ -9,7 +9,7 @@ import { handleError } from '../utils/handleError'
   providedIn: 'root'
 })
 export class CourseService {
-  private courseUrl = 'http://localhost:3002/courses'
+  private courseUrl = 'http://localhost:3000/courses'
 
   courses: Course[] = []
 
@@ -33,7 +33,7 @@ export class CourseService {
   }
 
   getCourseWithComments(id: number): Observable<CourseWithComments> {
-    const url = `${this.courseUrl}/${id}?_embed=comments`
+    const url = `${this.courseUrl}/${id}`
     return this.http
       .get<CourseWithComments>(url)
       .pipe(catchError(handleError<CourseWithComments>(`getCourseWithComments id=${id}`)))
